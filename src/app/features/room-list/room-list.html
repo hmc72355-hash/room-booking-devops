@@ -1,0 +1,29 @@
+<section aria-labelledby="results-title">
+  <h2 id="results-title">2 เลือกห้องพัก</h2>
+  <p>ผลค้นหา {{ stay().checkIn }} ถึง {{ stay().checkOut }}
+    รวม {{ nights() }} คืน สำหรับ {{ stay().guests }} คน
+    พบ {{ rooms().length }} ห้อง</p>
+  <div class="room-grid">
+    @for (room of rooms(); track room.id) {
+      <mat-card appearance="outlined" class="room-card">
+        <div class="room-art" aria-hidden="true">{{ room.id }}</div>
+        <mat-card-header>
+          <mat-card-title>{{ room.name }}</mat-card-title>
+          <mat-card-subtitle>{{ room.type }}
+            รองรับ {{ room.capacity }} คน</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ room.description }}</p>
+          <p class="price">{{ room.price |
+            currency:'THB':'symbol-narrow':'1.0-0' }} / คืน</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-stroked-button type="button"
+            (click)="roomSelected.emit(room)">เลือก {{ room.name }}</button>
+        </mat-card-actions>
+      </mat-card>
+    } @empty {
+      <p>ไม่พบห้องว่าง ลองเปลี่ยนวัน จำนวนผู้พัก หรือประเภทห้อง</p>
+    }
+  </div>
+</section>

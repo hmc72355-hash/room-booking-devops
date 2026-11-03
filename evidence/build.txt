@@ -1,0 +1,15 @@
+> Building...
+√ Building...
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-D2EREA6V.js    | main          | 494.97 kB |               110.37 kB
+styles-ZGNOPV4O.css | styles        |   7.02 kB |                 1.17 kB
+
+                    | Initial total | 501.99 kB |               111.54 kB
+
+Application bundle generation complete. [2.679 seconds] - 2026-11-03T07:37:48.605Z
+
+[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mbundle initial exceeded maximum budget. Budget 500.00 kB was not met by 1.99 kB with a total of 501.99 kB.[0m
+
+
+Output location: D:\devops-labs1\room-booking\dist\room-booking
+

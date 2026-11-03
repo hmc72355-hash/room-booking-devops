@@ -1,0 +1,13 @@
+:host { display: block; }
+mat-card { background: white; }
+mat-card-content { padding-top: 20px; }
+.search-grid {
+  display: grid; gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: start; padding-top: 12px;
+}
+.search-grid button { min-height: 44px; }
+.hint { color: #485c61; font-size: 0.9rem; }
+@media (max-width: 760px) {
+  .search-grid { grid-template-columns: 1fr; }
+}

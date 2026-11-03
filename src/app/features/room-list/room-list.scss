@@ -1,0 +1,14 @@
+:host { display: block; }
+h2 { margin-top: 32px; font-size: 1.4rem; }
+.room-grid {
+  display: grid; gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+.room-card { background: white; overflow: hidden; }
+mat-card-content { padding-top: 20px; }
+.room-art {
+  background: linear-gradient(120deg, #d2eee9, #e9e2d0);
+  color: #254d52; font-size: 3rem; padding: 22px;
+}
+.price { font-weight: 700; color: #164b59; }
+mat-card-actions { padding: 0 16px 16px; }

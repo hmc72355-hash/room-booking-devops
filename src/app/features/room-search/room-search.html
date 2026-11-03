@@ -1,0 +1,42 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>1 ค้นหาห้องว่าง</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form [formGroup]="searchForm" (ngSubmit)="search()"
+      class="search-grid">
+      <mat-form-field appearance="outline">
+        <mat-label>วันเข้าพัก</mat-label>
+        <input matInput type="date" formControlName="checkIn"
+          [min]="today" required>
+        <mat-error>ระบุวันเข้าพัก</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>วันออก</mat-label>
+        <input matInput type="date" formControlName="checkOut"
+          [min]="today" required>
+        <mat-error>ระบุวันออก</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>จำนวนผู้เข้าพัก</mat-label>
+        <mat-select formControlName="guests">
+          @for (count of [1, 2, 3, 4]; track count) {
+            <mat-option [value]="count">{{ count }} คน</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="outline">
+        <mat-label>ประเภทห้อง</mat-label>
+        <mat-select formControlName="type">
+          <mat-option value="all">ทุกประเภท</mat-option>
+          <mat-option value="Standard">Standard</mat-option>
+          <mat-option value="Deluxe">Deluxe</mat-option>
+          <mat-option value="Family">Family</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-flat-button type="submit">ค้นหาห้องว่าง</button>
+    </form>
+    <p class="hint">พักได้ 1 ถึง 30 คืน วันออกไม่นับเป็นคืนพัก
+      เมื่อแก้เงื่อนไขให้กดค้นหาอีกครั้ง</p>
+  </mat-card-content>
+</mat-card>

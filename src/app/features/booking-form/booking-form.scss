@@ -1,0 +1,6 @@
+:host { display: block; }
+.booking-panel { margin-top: 24px; background: white; }
+mat-card-content { padding-top: 20px; }
+.confirm-form { display: flex; gap: 16px; flex-wrap: wrap; }
+.confirm-form mat-form-field { flex: 1; min-width: 220px; }
+.confirm-form button { margin-top: 8px; }

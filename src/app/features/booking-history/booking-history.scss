@@ -1,0 +1,11 @@
+:host { display: block; }
+h2 { margin-top: 32px; font-size: 1.4rem; }
+.table-scroll { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; background: white; }
+caption { text-align: left; padding: 12px 0; }
+th, td { text-align: left; padding: 14px; border-bottom: 1px solid #d5e1df; }
+th { background: #e4efed; white-space: nowrap; }
+.status { color: #185c42; }
+@media (max-width: 760px) {
+  th, td { min-width: 115px; padding: 10px; }
+}

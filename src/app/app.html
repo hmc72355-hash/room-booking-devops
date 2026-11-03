@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <span>Andaman Stay</span>
+  <span class="spacer"></span>
+  <span class="toolbar-note">ห้องทดลอง Frontend</span>
+</mat-toolbar>
+<main>
+  <header class="intro">
+    <p class="eyebrow">ระบบจองห้องพักจำลอง</p>
+    <h1>เลือกวันพัก แล้วค้นหาห้องที่ใช่</h1>
+    <p>ใช้ข้อมูลสมมติ ไม่มีการชำระเงิน ไม่มี Backend API
+      และข้อมูลการจองจะหายเมื่อรีเฟรชหน้า</p>
+  </header>
+
+  <app-room-search (searched)="search($event)"
+    (invalidSearch)="rejectSearch($event)" />
+  <p class="notice" role="status" aria-live="polite">{{ notice() }}</p>
+
+  @if (query(); as stay) {
+    <app-room-list [rooms]="results()" [stay]="stay" [nights]="nights()"
+      (roomSelected)="select($event)" />
+    @if (selected(); as room) {
+      <app-booking-form [room]="room" [stay]="stay" [nights]="nights()"
+        (confirmed)="book($event)" (invalidBooking)="notice.set($event)" />
+    }
+  }
+
+  <app-booking-history [bookings]="store.bookings()"
+    (cancelRequested)="cancel($event)" />
+  <footer>ข้อมูลอยู่ในหน่วยความจำของแท็บนี้เท่านั้น
+    ใช้รหัสทีมแทนข้อมูลส่วนบุคคล</footer>
+</main>

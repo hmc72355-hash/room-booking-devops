@@ -1,0 +1,23 @@
+<mat-card appearance="outlined" class="booking-panel">
+  <mat-card-header>
+    <mat-card-title>3 ตรวจสอบและยืนยันการจอง</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ room().name }} | {{ stay().checkIn }} ถึง {{ stay().checkOut }}</p>
+    <p>{{ room().price | currency:'THB':'symbol-narrow':'1.0-0' }}
+      × {{ nights() }} คืน =
+      <strong>{{ total() |
+        currency:'THB':'symbol-narrow':'1.0-0' }}</strong></p>
+    <p>ราคาสุทธิสำหรับแบบฝึกนี้ ไม่มีภาษีหรือค่าบริการเพิ่ม</p>
+    <form [formGroup]="guestForm" (ngSubmit)="book()"
+      class="confirm-form">
+      <mat-form-field appearance="outline">
+        <mat-label>รหัสทีมสมมติ เช่น TEAM-01</mat-label>
+        <input matInput formControlName="teamCode"
+          maxlength="16" autocomplete="off" required>
+        <mat-error>ใช้ A-Z 0-9 หรือ - จำนวน 2 ถึง 16 ตัว</mat-error>
+      </mat-form-field>
+      <button mat-flat-button type="submit">ยืนยันการจอง</button>
+    </form>
+  </mat-card-content>
+</mat-card>

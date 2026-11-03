@@ -1,0 +1,43 @@
+<section aria-labelledby="bookings-title">
+  <h2 id="bookings-title">4 รายการจองในหน้านี้</h2>
+  <div class="table-scroll">
+    <table>
+      <caption>รายการจองจำลองและสถานะล่าสุด</caption>
+      <thead>
+        <tr><th>เลขจองและทีม</th><th>ห้อง</th><th>ช่วงพัก</th>
+          <th>ยอดรวม</th><th>สถานะและการจัดการ</th></tr>
+      </thead>
+      <tbody>
+        @for (booking of bookings(); track booking.id) {
+          <tr>
+            <td>{{ booking.id }}<br>{{ booking.teamCode }}</td>
+            <td>{{ booking.roomName }}</td>
+            <td>{{ booking.checkIn }} ถึง {{ booking.checkOut }}
+              <br>{{ booking.nights }} คืน {{ booking.guests }} คน</td>
+            <td>{{ booking.total |
+              currency:'THB':'symbol-narrow':'1.0-0' }}</td>
+            <td>
+              @if (booking.status === 'confirmed') {
+                <span class="status">ยืนยันแล้ว</span>
+                @if (pendingCancel() === booking.id) {
+                  <p>ยืนยันยกเลิก {{ booking.id }} หรือไม่</p>
+                  <button mat-button type="button"
+                    (click)="confirmCancel(booking.id)">ยืนยันยกเลิก</button>
+                  <button mat-button type="button"
+                    (click)="pendingCancel.set('')">เก็บรายการไว้</button>
+                } @else {
+                  <button mat-button type="button"
+                    (click)="pendingCancel.set(booking.id)">ยกเลิก</button>
+                }
+              } @else {
+                <span>ยกเลิกแล้ว</span>
+              }
+            </td>
+          </tr>
+        } @empty {
+          <tr><td colspan="5">ยังไม่มีรายการจอง</td></tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
